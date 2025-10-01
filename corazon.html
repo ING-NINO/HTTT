@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Para Alejandra ❤️</title>
+
+    <!-- Fuente romántica -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1e3c72, #2a5298, #ff6a88, #ff99ac);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 3rem;
+        color: #fff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        margin-bottom: 20px;
+        z-index: 2;
+        animation: textPulse 2s infinite;
+      }
+
+      @keyframes textPulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .glass {
+        position: relative;
+        width: 340px;
+        height: 340px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: float 4s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      .heart {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        background: #f70e0e;
+        transform: rotate(-45deg);
+        animation: pulse 1.5s infinite;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: #f70e0e;
+      }
+
+      .heart::before {
+        top: -80px;
+        left: 0;
+      }
+
+      .heart::after {
+        top: 0;
+        left: 80px;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: rotate(-45deg) scale(1);
+        }
+        50% {
+          transform: rotate(-45deg) scale(1.1);
+        }
+        100% {
+          transform: rotate(-45deg) scale(1);
+        }
+      }
+
+      /* Corazones cayendo */
+      .falling-heart {
+        position: absolute;
+        top: -30px;
+        font-size: 1.5rem;
+        animation: fall linear infinite;
+        color: #ff99ac;
+        pointer-events: none;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>No se Haga Extrañar Alejandra 💗</h1>
+
+    <div class="glass">
+      <div class="heart"></div>
+    </div>
+
+    <!-- Corazones cayendo -->
+    <script>
+      function createFallingHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("falling-heart");
+        heart.innerText = "💗";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+
+      setInterval(createFallingHeart, 400);
+    </script>
+  </body>
+</html>
